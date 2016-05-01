@@ -67,7 +67,7 @@ class SearchModel
         $page_data = array();
         
         if(isset($result['matches'])){
-            $ids=join(',',array_column($result['matches'], 'id'));
+            $ids=join(',',Tools::array_column($result['matches'], 'id'));
             $db_data    = $this->getPageDataFromDb($ids);
             $page_data  = $this->highlightData($db_data, $this->q);
         }    
