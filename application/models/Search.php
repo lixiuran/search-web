@@ -24,9 +24,11 @@ class SearchModel
      */
     public function __construct()
     {
+        
         $this->obj_db   = Yaf_Registry::get('db');
         $this->obj_cl   = new SphinxClient();
         $this->_init();
+        $this->getCrawlNum();
     }
     
     /**
@@ -87,6 +89,7 @@ class SearchModel
             'page_data' => $page_data,
             'page_nav'  => $page_nav,
             'sph_res'   => $result,
+            'crawl_total'   => $this->getCrawlNum(),
         );
         
         return $return;
@@ -102,9 +105,19 @@ class SearchModel
         if (empty($ids)) {
             return array();
         }
-        $sql="select id,title,post_time,description,link,post_author,create_time,view_count,comment_count from cnblogs_tb where id in({$ids})";
-        $res= $this->obj_db->get_all($sql);
+        $sql = "select id,title,post_time,description,link,post_author,create_time,view_count,comment_count from cnblogs_tb where id in({$ids})";
+        $res = $this->obj_db->get_all($sql);
         return !empty($res) ? $res : array();
+    }
+    
+    /**
+     * 获取收录博文数
+     */
+    public function getCrawlNum() 
+    {
+        $sql = 'select count(id) as cnt from cnblogs_tb'; 
+        $cnt = $this->obj_db->get_one($sql,'cnt');
+        return $cnt ? $cnt : 0;       
     }
     
     /**

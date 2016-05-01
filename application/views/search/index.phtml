@@ -53,7 +53,11 @@
 			<div id="wall">
 
 				<div class="search-statu">
-					<span>大约  <?=$sph_res['total_found']?> 条结果，耗时 <?=$sph_res['time']*1000?> 毫秒。</span> <span> 
+					<span>
+					   大约  <?=$sph_res['total_found']?> 条结果，耗时 <?=$sph_res['time']*1000?> 毫秒。
+					   &nbsp;已收录 [<?=$crawl_total?>]
+					</span> 
+					<span> 
 					<a style='display: none;' href="" target="_blank" type="application/rss+xml"> 
 					   <img src="/static/img/icon_rss.gif" alt="rss" />
 					</a>
