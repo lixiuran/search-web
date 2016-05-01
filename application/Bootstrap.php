@@ -14,8 +14,8 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
     public function _initConfig()
     {
         // 把配置保存起来
-        $arrConfig = Yaf_Application::app()->getConfig();
-        Yaf_Registry::set('config', $arrConfig);
+        $this->arrConfig = Yaf_Application::app()->getConfig();
+        Yaf_Registry::set('config', $this->arrConfig);
     }
 
     public function _initPlugin(Yaf_Dispatcher $dispatcher)
@@ -28,9 +28,6 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
     public function _initRoute(Yaf_Dispatcher $dispatcher)
     {
         // 在这里注册自己的路由协议,默认使用简单路由
-        // $a = $dispatcher->getRouter()->getCurrentRoute();
-        // $router = Yaf_Dispatcher::getInstance()->getRouter();
-        // var_dump($router);die;
         $router = Yaf_Dispatcher::getInstance()->getRouter();
         $route = new Yaf_Route_Supervar("s");
         $router->addRoute("name", $route);
@@ -39,5 +36,18 @@ class Bootstrap extends Yaf_Bootstrap_Abstract
     public function _initView(Yaf_Dispatcher $dispatcher)
     {
         // 在这里注册自己的view控制器，例如smarty,firekylin
+    }
+    
+    //载入数据库
+    public function _initDatabase()
+    {
+        $db_config['hostname'] = $this->arrConfig->db->hostname;
+        $db_config['username'] = $this->arrConfig->db->username;
+        $db_config['password'] = $this->arrConfig->db->password;
+        $db_config['database'] = $this->arrConfig->db->database;
+        $db_config['log']      = $this->arrConfig->db->log;
+        $db_config['logfilepath']      = $this->arrConfig->db->logfilepath;
+    
+        Yaf_Registry::set('db', new Db($db_config));
     }
 }

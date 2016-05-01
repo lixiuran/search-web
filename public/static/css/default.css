@@ -454,6 +454,12 @@ input[type=submit].blue:active {
 	font-weight: bold;
 }
 
+.bottom-pager a.now_page {
+	background-color: #EEE;
+	color: #888;
+	font-weight: bold;
+}
+
 .bottom-pager a:hover {
 	background: #f2f8ff;
 	border: 1px solid #38f;
