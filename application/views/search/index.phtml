@@ -77,7 +77,9 @@
 					</div>
 					<div class="item-bar">
 						<span class="cpill fileType1">博客园</span> 
-						<span> 创建时间： <b><?=$v['updated']?></b></span>  
+						<span><b> posted @ <?=$v['post_time']?></b>&nbsp;&nbsp; <b><?=$v['post_author']?></b></span>  
+						<span> 阅读(<b><?=$v['view_count']?></b>)</span>  
+						<span> 评论(<b><?=$v['comment_count']?></b>)</span>  
 					</div>
 				</div>
 				<?php endforeach;?>

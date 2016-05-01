@@ -85,12 +85,12 @@ Class Db
 		return $rt;
 	}
 	
-    /**
-     * 获取全部记录 MYSQLI_ASSOC, MYSQLI_NUM, or MYSQLI_BOTH.
-     * @param unknown $sql
-     * @param string $result_type
-     * @return multitype:unknown
-     */
+	/**
+	 * 获取全部记录 MYSQLI_ASSOC, MYSQLI_NUM, or MYSQLI_BOTH.
+	 * @param unknown $sql
+	 * @param string $result_type
+	 * @return multitype:unknown
+	 */
 	public function get_all($sql, $result_type = MYSQLI_ASSOC)
 	{
 		$query = $this->query($sql);
@@ -163,7 +163,7 @@ Class Db
 
 		$stmt = mysqli_stmt_init($this->link);
 
-		mysqli_stmt_prepare($stmt,$sql);
+    	mysqli_stmt_prepare($stmt,$sql);
 		array_unshift($paramarr,$stmt,$params);//把资源句柄和字符类型插入数组前两位
 
         //参数要传引用。具体见PHP手册mysqli_stmt_bind_param

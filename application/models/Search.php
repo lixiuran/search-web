@@ -63,7 +63,6 @@ class SearchModel
         }
 
         $result = $this->obj_cl->Query($this->q, "*");
-        
         //分页高亮后的结果列表
         $page_data = array();
         
@@ -103,7 +102,7 @@ class SearchModel
         if (empty($ids)) {
             return array();
         }
-        $sql="select id,title,updated,description,link from cnblogsinfo where id in({$ids})";
+        $sql="select id,title,post_time,description,link,post_author,create_time,view_count,comment_count from cnblogs_tb where id in({$ids})";
         $res= $this->obj_db->get_all($sql);
         return !empty($res) ? $res : array();
     }
@@ -121,9 +120,13 @@ class SearchModel
             $res=$this->obj_cl->BuildExcerpts($row, self::SP_INDEX, $q, $this->hi_opts);
             $hi_data[$k]['id'] = $res[0];
             $hi_data[$k]['title'] = $res[1];
-            $hi_data[$k]['updated'] = $res[2];
+            $hi_data[$k]['post_time'] = $res[2];
             $hi_data[$k]['description'] = $res[3];
             $hi_data[$k]['link'] = $res[4];
+            $hi_data[$k]['post_author'] = $res[5];
+            $hi_data[$k]['create_time'] = $res[6];
+            $hi_data[$k]['view_count'] = $res[7];
+            $hi_data[$k]['comment_count'] = $res[8];
          }
          return $hi_data;
     }
