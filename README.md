@@ -8,6 +8,6 @@
 * 遇到了很多坑, 大部分是环境部署的问题,大部分都记录到博客里了,有问题也可以q我: 769871707.
 
 <br/>
-参考文档:
-YAF: http://www.laruence.com/manual/
+参考文档:<br/>
+YAF: http://www.laruence.com/manual/ <br/>
 Scrapy : http://doc.scrapy.org/en/1.0/
