@@ -1,6 +1,6 @@
 CREATE DATABASE crawl_db DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-Create Table: CREATE TABLE `cnblogs_tb` (
+Create Table: CREATE TABLE `cd_cnblogs` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `item_id` char(32) NOT NULL COMMENT 'url md5编码id',
   `title` varchar(255) DEFAULT NULL COMMENT '标题',

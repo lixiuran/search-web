@@ -105,7 +105,7 @@ class SearchModel
         if (empty($ids)) {
             return array();
         }
-        $sql = "select id,title,post_time,description,link,post_author,create_time,view_count,comment_count from cnblogs_tb where id in({$ids})";
+        $sql = "select id,title,post_time,description,link,post_author,create_time,view_count,comment_count from cd_cnblogs where id in({$ids})";
         $res = $this->obj_db->get_all($sql);
         return !empty($res) ? $res : array();
     }
@@ -115,7 +115,7 @@ class SearchModel
      */
     public function getCrawlNum() 
     {
-        $sql = 'select count(id) as cnt from cnblogs_tb'; 
+        $sql = 'select count(id) as cnt from cd_cnblogs'; 
         $cnt = $this->obj_db->get_one($sql,'cnt');
         return $cnt ? $cnt : 0;       
     }
