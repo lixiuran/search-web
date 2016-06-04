@@ -115,7 +115,7 @@ class SearchModel
      */
     public function getCrawlNum() 
     {
-        $sql = 'select count(id) as cnt from cd_cnblogs'; 
+        $sql = 'select max(id) as cnt from cd_cnblogs'; 
         $cnt = $this->obj_db->get_one($sql,'cnt');
         return $cnt ? $cnt : 0;       
     }
