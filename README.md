@@ -11,3 +11,6 @@
 参考文档:<br/>
 YAF: http://www.laruence.com/manual/ <br/>
 Scrapy : http://doc.scrapy.org/en/1.0/
+
+### yaf安装部署
+http://blog.csdn.net/mlx212/article/details/44178395
