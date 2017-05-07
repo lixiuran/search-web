@@ -1,4 +1,4 @@
-## http://51search.cc 搜索前端
+## http://51search.cc 搜索前端 s.qiwenqiqu.com
 
 [我的博客](http://xiuran.me "风与叶子")
 
@@ -14,3 +14,6 @@ Scrapy : http://doc.scrapy.org/en/1.0/
 
 ### yaf安装部署
 http://blog.csdn.net/mlx212/article/details/44178395
+
+### Coreseek-3.2.14稳定版本安装部署步骤 
+http://www.cnlvzi.com/index.php/Index/article/id/161
