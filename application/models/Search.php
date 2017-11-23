@@ -1,36 +1,35 @@
 <?php
-
 /**
  * 搜索模型类
  * @author lixiuran <http://xiuran.me>
  */
 
-class SearchModel 
+class SearchModel
 {
     const PAGE_SIZE  = 10;
     const SP_INDEX   = 'cnblogs';
-    
+
     protected $obj_cl    = null;
     protected $obj_db    = null;
     protected $obj_redis = null;
     protected $obj_page  = null;
-    
+
     protected $hi_opts   = array();
     protected $p         = 1;
     protected $q         = '';
-    
+
     /**
      * 初始化对象
      */
     public function __construct()
     {
-        
+
         $this->obj_db   = Yaf_Registry::get('db');
         $this->obj_cl   = new SphinxClient();
         $this->_init();
         $this->getCrawlNum();
     }
-    
+
     /**
      * 初始化参数
      */
@@ -47,7 +46,7 @@ class SearchModel
             "after_match" => "</span>"
         );
     }
-    
+
     /**
      * 获取搜索后的数据,包括分页导航
      * @param string $q
@@ -67,13 +66,13 @@ class SearchModel
         $result = $this->obj_cl->Query($this->q, "*");
         //分页高亮后的结果列表
         $page_data = array();
-        
+
         if(isset($result['matches'])){
             $ids=join(',',Tools::array_column($result['matches'], 'id'));
             $db_data    = $this->getPageDataFromDb($ids);
             $page_data  = $this->highlightData($db_data, $this->q);
-        }    
-        
+        }
+
         //获取分页导航
         $params = array(
             'total_rows'=> $result['total'],
@@ -84,17 +83,17 @@ class SearchModel
         );
         $this->obj_page = new Page($params);
         $page_nav = $this->obj_page->show(2);
-        
+
         $return =  array(
             'page_data' => $page_data,
             'page_nav'  => $page_nav,
             'sph_res'   => $result,
             'crawl_total'   => $this->getCrawlNum(),
         );
-        
+
         return $return;
     }
-    
+
     /**
      * 通过主键查找一页的数据
      * @param string $ids 逗号隔开
@@ -109,17 +108,17 @@ class SearchModel
         $res = $this->obj_db->get_all($sql);
         return !empty($res) ? $res : array();
     }
-    
+
     /**
      * 获取收录博文数
      */
-    public function getCrawlNum() 
+    public function getCrawlNum()
     {
-        $sql = 'select max(id) as cnt from cd_cnblogs'; 
+        $sql = 'select max(id) as cnt from cd_cnblogs';
         $cnt = $this->obj_db->get_one($sql,'cnt');
-        return $cnt ? $cnt : 0;       
+        return $cnt ? $cnt : 0;
     }
-    
+
     /**
      * 搜索结果 关键词标红 [注意:bulid之后返回的是索引数组,与上边sql的字段要对应]
      * @param array $list 单页数据
@@ -143,7 +142,7 @@ class SearchModel
          }
          return $hi_data;
     }
-    
+
     /**
      * @return the $hi_opts
      */
@@ -191,5 +190,4 @@ class SearchModel
     {
         $this->q = $q;
     }
-
 }

@@ -1,21 +1,20 @@
 <?php
-
 /**
- * 工具类 
+ * 工具类
  * @author lixiuran
  */
 
-class Tools 
+class Tools
 {
-    
+
     /**
-     * array_column 
+     * array_column
      * @param unknown $input
      * @param unknown $column_key
      * @param string $index_key
      * @return multitype:|multitype:unknown
-     */    
-    public static function array_column($input, $column_key, $index_key = null) 
+     */
+    public static function array_column($input, $column_key, $index_key = null)
     {
         if ($index_key !== null) {
             $keys = array();
@@ -50,5 +49,5 @@ class Tools
         }
         return $values;
     }
-    
+
 }
