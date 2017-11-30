@@ -1,6 +1,6 @@
-## http://s.qiwenqiqu.com 搜索前端测试域名
+## http://51search.cc 搜索前端测试域名
 
-[我的博客](http://cnblogs.com/lixiuran "风与叶子")
+[我的博客](http://xiuran.me "风与叶子")
 
 * 本程序采用 yaf ＋ mysql + sphinx(coreseek 3.2.4) 的前端搜索
 * 数据收集 (scrapy1.0.5 + python2.7.5 + mysql) 爬虫框架[search-crawl](https://github.com/xiaobenxiong/search-crawl "爬虫代码") 
